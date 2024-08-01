@@ -1,4 +1,5 @@
 defmodule AgentRefWeb.Router do
+
   use AgentRefWeb, :router
 
   import AgentRefWeb.UserAuth
@@ -20,7 +21,8 @@ defmodule AgentRefWeb.Router do
   scope "/", AgentRefWeb do
     pipe_through :browser
 
-    get "/", PageController, :home
+    live "/", DashLive.Index, :index
+
   end
 
   # Other scopes may use custom stacks.

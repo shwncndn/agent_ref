@@ -1,5 +1,20 @@
 # AgentRef
 
+
+## TODO
+
+- "Select State" modal to set U.S. State w/ additional granularity (city, county, zip cod)
+
+
+
+
+
+
+
+
+
+
+
 To start your Phoenix server:
 
   * Run `mix setup` to install and setup dependencies
