@@ -1,0 +1,53 @@
+<.header>
+  Listing Agents
+  <:actions>
+    <.link patch={~p"/agents/new"}>
+      <.button>New Agent</.button>
+    </.link>
+  </:actions>
+</.header>
+
+<.table
+  id="agents"
+  rows={@streams.agents}
+  row_click={fn {_id, agent} -> JS.navigate(~p"/agents/#{agent}") end}
+>
+  <:col :let={{_id, agent}} label="First name"><%= agent.first_name %></:col>
+  <:col :let={{_id, agent}} label="Last name"><%= agent.last_name %></:col>
+  <:col :let={{_id, agent}} label="License"><%= agent.license %></:col>
+  <:col :let={{_id, agent}} label="Email"><%= agent.email %></:col>
+  <:col :let={{_id, agent}} label="State"><%= agent.state %></:col>
+  <:col :let={{_id, agent}} label="City"><%= agent.city %></:col>
+  <:col :let={{_id, agent}} label="County"><%= agent.county %></:col>
+  <:col :let={{_id, agent}} label="Brokerage"><%= agent.brokerage %></:col>
+  <:col :let={{_id, agent}} label="Address"><%= agent.address %></:col>
+  <:col :let={{_id, agent}} label="Broker phone"><%= agent.broker_phone %></:col>
+  <:col :let={{_id, agent}} label="Agent phone"><%= agent.agent_phone %></:col>
+  <:col :let={{_id, agent}} label="Broker email"><%= agent.broker_email %></:col>
+  <:col :let={{_id, agent}} label="Submitted by"><%= agent.submitted_by %></:col>
+  <:action :let={{_id, agent}}>
+    <div class="sr-only">
+      <.link navigate={~p"/agents/#{agent}"}>Show</.link>
+    </div>
+    <.link patch={~p"/agents/#{agent}/edit"}>Edit</.link>
+  </:action>
+  <:action :let={{id, agent}}>
+    <.link
+      phx-click={JS.push("delete", value: %{id: agent.id}) |> hide("##{id}")}
+      data-confirm="Are you sure?"
+    >
+      Delete
+    </.link>
+  </:action>
+</.table>
+
+<.modal :if={@live_action in [:new, :edit]} id="agent-modal" show on_cancel={JS.patch(~p"/agents")}>
+  <.live_component
+    module={AgentRefWeb.AgentLive.FormComponent}
+    id={@agent.id || :new}
+    title={@page_title}
+    action={@live_action}
+    agent={@agent}
+    patch={~p"/agents"}
+  />
+</.modal>

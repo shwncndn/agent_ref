@@ -1,0 +1,38 @@
+<.header>
+  Agent <%= @agent.id %>
+  <:subtitle>This is a agent record from your database.</:subtitle>
+  <:actions>
+    <.link patch={~p"/agents/#{@agent}/show/edit"} phx-click={JS.push_focus()}>
+      <.button>Edit agent</.button>
+    </.link>
+  </:actions>
+</.header>
+
+<.list>
+  <:item title="First name"><%= @agent.first_name %></:item>
+  <:item title="Last name"><%= @agent.last_name %></:item>
+  <:item title="License"><%= @agent.license %></:item>
+  <:item title="Email"><%= @agent.email %></:item>
+  <:item title="State"><%= @agent.state %></:item>
+  <:item title="City"><%= @agent.city %></:item>
+  <:item title="County"><%= @agent.county %></:item>
+  <:item title="Brokerage"><%= @agent.brokerage %></:item>
+  <:item title="Address"><%= @agent.address %></:item>
+  <:item title="Broker phone"><%= @agent.broker_phone %></:item>
+  <:item title="Agent phone"><%= @agent.agent_phone %></:item>
+  <:item title="Broker email"><%= @agent.broker_email %></:item>
+  <:item title="Submitted by"><%= @agent.submitted_by %></:item>
+</.list>
+
+<.back navigate={~p"/agents"}>Back to agents</.back>
+
+<.modal :if={@live_action == :edit} id="agent-modal" show on_cancel={JS.patch(~p"/agents/#{@agent}")}>
+  <.live_component
+    module={AgentRefWeb.AgentLive.FormComponent}
+    id={@agent.id}
+    title={@page_title}
+    action={@live_action}
+    agent={@agent}
+    patch={~p"/agents/#{@agent}"}
+  />
+</.modal>
