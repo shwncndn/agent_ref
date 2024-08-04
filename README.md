@@ -5,7 +5,8 @@
 
 - "Select State" modal to set U.S. State w/ additional granularity (city, county, zip cod)
 
-
+- Container-based design
+  - Navbar is a left-oriented vertical con
 
 
 
