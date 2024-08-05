@@ -22,6 +22,7 @@ defmodule AgentRefWeb.Router do
     pipe_through :browser
 
     live "/", DashLive.Index, :index
+    live "/map", MapLive.Index, :index
     live "/agents", AgentLive.Index, :index
     live "/agents/new", AgentLive.Index, :new
     live "/agents/:id/edit", AgentLive.Index, :edit
