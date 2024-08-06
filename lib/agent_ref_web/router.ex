@@ -21,6 +21,9 @@ defmodule AgentRefWeb.Router do
   scope "/", AgentRefWeb do
     pipe_through :browser
 
+
+
+    live_session :agent_referral do
     live "/", DashLive.Index, :index
     live "/map", MapLive.Index, :index
     live "/agents", AgentLive.Index, :index
@@ -29,7 +32,7 @@ defmodule AgentRefWeb.Router do
 
     live "/agents/:id", AgentLive.Show, :show
     live "/agents/:id/show/edit", AgentLive.Show, :edit
-
+    end
   end
 
   # Other scopes may use custom stacks.
