@@ -8,6 +8,8 @@
 - Container-based design
   - Navbar is a left-oriented vertical con
   - Rate/comment
+  - FAQ from SoundLift
+  - create component library
 
 
 

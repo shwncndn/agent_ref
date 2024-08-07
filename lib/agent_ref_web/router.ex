@@ -25,7 +25,11 @@ defmodule AgentRefWeb.Router do
 
     live_session :agent_referral do
     live "/", DashLive.Index, :index
+
+    live "/faq", FaqLive.Index, :index
+
     live "/map", MapLive.Index, :index
+
     live "/agents", AgentLive.Index, :index
     live "/agents/new", AgentLive.Index, :new
     live "/agents/:id/edit", AgentLive.Index, :edit
