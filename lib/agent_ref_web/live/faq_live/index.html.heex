@@ -1,0 +1,103 @@
+<div class="relative mx-auto px-6 py-24 sm:py-32 lg:px-8 lg:py-40" id="faq_section">
+  <div class="divide-gray-900/10 mx-auto divide-y">
+    <p class="pt-20 text-4xl font-bold leading-10 tracking-tight text-gray-900">
+      Frequently Asked Questions
+    </p>
+    <dl class="divide-gray-900/10 mt-10 space-y-6 divide-y">
+      <div
+        phx-click={toggle_faq("general_faq")}
+        class="flex w-full cursor-pointer select-none items-start items-center justify-between text-left text-gray-900"
+      >
+        <p class="text-[#33669A] pt-4 text-3xl font-bold leading-10 tracking-tight">
+          General
+        </p>
+        <span class="ml-6 flex h-7 items-center">
+          <svg
+            class="text-[#33669A] mt-6 h-7 w-7 origin-center"
+            id="general_faq_minus"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            aria-hidden="true"
+          >
+            <path stroke-linecap="round" stroke-linejoin="round" d="M18 12H6" />
+          </svg>
+          <svg
+            class="text-[#33669A] mt-6 hidden h-7 w-7 origin-center"
+            id="general_faq_plus"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            aria-hidden="true"
+          >
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m6-6H6" />
+          </svg>
+        </span>
+      </div>
+      <div
+        id="general_faq"
+        class="grid-rows-[0fr] grid-rows-[1fr] expanded grid overflow-hidden pt-8 pr-6 transition-all duration-300 ease-in-out"
+      >
+        <div class="overflow-hidden">
+          <.list_item
+            :for={{{question, answer}, id} <- @general_items}
+            id={"general_faqs_#{id}"}
+            question={question}
+            answer={answer}
+            answer_color="grey-900"
+          />
+        </div>
+      </div>
+
+      <div
+              phx-click={toggle_faq("map_faq")}
+              class="flex w-full cursor-pointer select-none items-start items-center justify-between text-left text-gray-900"
+            >
+              <p class="text-[#33669A] pt-4 text-3xl font-bold leading-10 tracking-tight">
+                Map
+              </p>
+              <span class="ml-6 flex h-7 items-center">
+                <svg
+                  class="text-[#33669A] mt-6 hidden h-7 w-7 origin-center"
+                  id="map_faq_minus"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  aria-hidden="true"
+                >
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M18 12H6" />
+                </svg>
+                <svg
+                  class="text-[#33669A] mt-6 h-7 w-7 origin-center"
+                  id="map_faq_plus"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  aria-hidden="true"
+                >
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m6-6H6" />
+                </svg>
+              </span>
+            </div>
+            <div
+              id="map_faq"
+              class="grid-rows-[0fr] grid overflow-hidden pr-6 transition-all duration-300 ease-in-out"
+            >
+              <div class="overflow-hidden">
+                <.list_item
+                  :for={{{question, answer}, id} <- @map_items}
+                  id={"map_faqs_#{id}"}
+                  question={question}
+                  answer={answer}
+                  answer_color="grey-900"
+                />
+              </div>
+            </div>
+
+    </dl>
+  </div>
+</div>
