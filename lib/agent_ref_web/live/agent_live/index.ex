@@ -5,8 +5,12 @@ defmodule AgentRefWeb.AgentLive.Index do
   alias AgentRef.Agents.Agent
 
   @impl true
-  def mount(_params, _session, socket) do
-    {:ok, stream(socket, :agents, Agents.list_agents())}
+  def mount(_params, session, socket) do
+    current_user = Map.get(session, "current_user")
+    {:ok,
+     socket
+     |> assign(:current_user, current_user)
+     |> stream(:agents, AgentRef.Agents.list_agents())}
   end
 
   @impl true

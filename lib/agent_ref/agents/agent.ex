@@ -16,6 +16,8 @@ defmodule AgentRef.Agents.Agent do
     field :agent_phone, :integer
     field :broker_email, :string
     field :submitted_by, :string
+    field :longitude, :float
+    field :latitude, :float
 
     timestamps(type: :utc_datetime)
   end
@@ -23,8 +25,8 @@ defmodule AgentRef.Agents.Agent do
   @doc false
   def changeset(agent, attrs, current_user) do
     agent
-    |> cast(attrs, [:first_name, :last_name, :license, :email, :state, :city, :county, :brokerage, :address, :broker_phone, :agent_phone, :broker_email, :submitted_by])
+    |> cast(attrs, [:first_name, :last_name, :license, :email, :state, :city, :county, :brokerage, :address, :broker_phone, :agent_phone, :broker_email, :submitted_by, :longitude, :latitude])
     |> put_change(:submitted_by, current_user.email)
-    |> validate_required([:first_name, :last_name, :license, :email, :state, :city, :county, :brokerage, :address, :broker_phone, :agent_phone, :broker_email, :submitted_by])
+    |> validate_required([:first_name, :last_name, :license, :email, :state, :city, :county, :brokerage, :address, :broker_phone, :agent_phone, :broker_email, :submitted_by, :longitude, :latitude])
   end
 end

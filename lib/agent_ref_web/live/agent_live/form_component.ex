@@ -41,13 +41,14 @@ defmodule AgentRefWeb.AgentLive.FormComponent do
   end
 
   @impl true
-  def update(%{agent: agent} = assigns, socket) do
-    changeset = AgentRef.Agents.Agent.changeset(agent, %{}, socket.assigns.current_user)
+  def update(%{agent: agent, current_user: current_user} = assigns, socket) do
+    changeset = Agents.change_agent(agent)
 
     {:ok,
      socket
      |> assign(assigns)
-     |> assign(:changeset, changeset)}
+     |> assign(:changeset, changeset)
+     |> assign(:current_user, current_user)}
   end
 
   @impl true
