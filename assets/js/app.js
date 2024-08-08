@@ -22,9 +22,16 @@ import {Socket} from "phoenix"
 import {LiveSocket} from "phoenix_live_view"
 import topbar from "../vendor/topbar"
 
-import GMaps from "./hookGMaps"
+import GMaps from "./GMaps"
+import DashMaps from "./DashMaps"
 
-const Hooks = { GMaps: GMaps };
+const Hooks = { 
+  GMaps: GMaps,
+  DashMaps: DashMaps
+};
+
+
+
 
 let csrfToken = document.querySelector("meta[name='csrf-token']").getAttribute("content")
 

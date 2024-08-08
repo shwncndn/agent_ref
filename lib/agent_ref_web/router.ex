@@ -19,11 +19,14 @@ defmodule AgentRefWeb.Router do
   end
 
   scope "/", AgentRefWeb do
-    pipe_through :browser
+    pipe_through [:browser, :require_authenticated_user]
 
 
 
-    live_session :agent_referral do
+    live_session :agent_referral,
+    on_mount: [
+
+    ] do
     live "/", DashLive.Index, :index
 
     live "/faq", FaqLive.Index, :index
