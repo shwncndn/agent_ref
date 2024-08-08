@@ -1,74 +1,60 @@
-<div class="mt-10 flex flex-col">
-  <div id="dash-button-bar" class="flex justify-end">
+<div class="mt-10">
+  <div id="button-bar" class="">
     <.link patch={~p"/agents/new"}>
       <.button
         type="button"
         class="rounded-md bg-[#11b7c0] border-[1px] 
-        border-[#2eb9c2] px-8 py-2 text-xl font-semibold 
+        border-[#2eb9c2] px-3 py-2 text-sm font-semibold 
         text-[#14b8c0] shadow-md ring-1 ring-inset
         ring-gray-300 bg-opacity-0 
         hover:bg-gray-200 
-        active:text-[#060707]"
+        active:text-[#14b8c0]"
       >
         + Add a new agent
       </.button>
     </.link>
   </div>
+  <div class="pt-10"></div> <!-- spacer -->
+  <div id="map" class=""></div>
 
-  <div class="pt-10 flex gap-10 relative">
-    <div id="dash-map" class="flex-1 rounded-lg bg-[#e7ebf0] shadow-md">
-      <div
-        id="googleMap"
-        class="w-full h-full bg-slate-100 rounded-lg"
-        phx-hook="DashMaps"
-        phx-update="ignore"
-      >
-      </div>
-      <div class="flex">
-      <div class="absolute bottom-0 left-0 bg-[#e7ebef] p-4 rounded-lg w-20 justify-start">
-        
-      </div>
-      <div class="absolute bottom-0 right-[307px] bg-[#e7ebef] pb-4 rounded-lg h-[1px] w-[328px] flex justify-end">
- 
-      </div>
-      </div>
-    </div>
-
-    <div id="stats" class="flex-[0.33] flex flex-col gap-10">
-      <div class="overflow-hidden rounded-lg bg-[#e7ebf0] shadow-md">
-        <div class="px-4 py-5 sm:p-6">
-          <p class="text-4xl">145</p>
-          <p class="text-[#6e6e6e]">Agents in Network</p>
-        </div>
-      </div>
-
-      <div class="overflow-hidden rounded-lg bg-[#e7ebf0] shadow-md">
-        <div class="px-4 py-5 sm:p-6">
-          <p class="text-4xl">24</p>
-          <p class="text-[#6e6e6e]">Areas Covered</p>
-        </div>
-      </div>
-
-      <div class="overflow-hidden rounded-lg bg-[#e7ebf0] shadow-md">
-        <div class="px-4 py-5 sm:p-6">
-          <p class="text-4xl">7</p>
-          <p class="text-[#6e6e6e]">Deals Referred</p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="pt-10 flex">
-    <div
-      id="notifications"
-      class="w-full overflow-hidden rounded-lg bg-[#e7ebf0] shadow-md divide-y divide-gray-200"
-    >
-      <div class="px-4 py-5 sm:px-6">
-        <p class="text-[#6e6e6e] font-semibold">Notifications Heading</p>
-      </div>
+  <div id="stats" class="">
+    <div id="card-1" class="overflow-hidden rounded-lg bg-[#e7ebf0] shadow-md">
       <div class="px-4 py-5 sm:p-6">
-        <p class="text-[#6e6e6e]">Notifications Body</p>
+      <p>145</p>
+        <p class="text-[#6e6e6e]">Agents in Network</p>
+      </div>
+    </div>
+
+    <div class="pt-10"></div> <!-- spacer -->
+
+    <div class="overflow-hidden rounded-lg bg-[#e7ebf0] shadow-md">
+      <div class="px-4 py-5 sm:p-6">
+        <p>24</p>
+        <p class="text-[#6e6e6e]">Areas Covered</p>
+      </div>
+    </div>
+
+    <div class="pt-10"></div> <!-- spacer -->
+
+    <div class="overflow-hidden rounded-lg bg-[#e7ebf0] shadow-md">
+      <div class="px-4 py-5 sm:p-6">
+      <p>7</p>
+        <p class="text-[#6e6e6e]">Deals Referred</p>
       </div>
     </div>
   </div>
+
+
+<div class="pt-10"></div> <!-- spacer -->
+  <div id="notifications" class=""></div>
+  <div class="divide-y divide-gray-200 overflow-hidden rounded-lg bg-[#e7ebf0] shadow-md">
+  <div class="px-4 py-5 sm:px-6">
+    <p class="text-[#6e6e6e] font-semibold">Notifications Heading</p>
+    <!-- We use less vertical padding on card headers on desktop than on body sections -->
+  </div>
+  <div class="px-4 py-5 sm:p-6">
+    <p class="text-[#6e6e6e]">Notifications Body</p>
+  </div>
+</div>
+
 </div>
