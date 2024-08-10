@@ -1,5 +1,4 @@
 defmodule AgentRefWeb.Router do
-
   use AgentRefWeb, :router
 
   import AgentRefWeb.UserAuth
@@ -21,25 +20,31 @@ defmodule AgentRefWeb.Router do
   scope "/", AgentRefWeb do
     pipe_through [:browser, :require_authenticated_user]
 
-
-
     live_session :agent_referral,
-    on_mount: [
+      on_mount: [] do
+      live "/", DashLive.Index, :index
 
-    ] do
-    live "/", DashLive.Index, :index
+      live "/faq", FaqLive.Index, :index
 
-    live "/faq", FaqLive.Index, :index
+      live "/map", MapLive.Index, :index
 
-    live "/map", MapLive.Index, :index
+      live "/agents", AgentLive.Index, :index
+      live "/agents/new", AgentLive.Index, :new
+      live "/agents/:id/edit", AgentLive.Index, :edit
 
-    live "/agents", AgentLive.Index, :index
-    live "/agents/new", AgentLive.Index, :new
-    live "/agents/:id/edit", AgentLive.Index, :edit
-
-    live "/agents/:id", AgentLive.Show, :show
-    live "/agents/:id/show/edit", AgentLive.Show, :edit
+      live "/agents/:id", AgentLive.Show, :show
+      live "/agents/:id/show/edit", AgentLive.Show, :edit
     end
+  end
+
+  scope "/", AgentRefWeb do
+    pipe_through :browser
+    live "/targets", TargetLive.Index, :index
+    live "/targets/new", TargetLive.Index, :new
+    live "/targets/:id/edit", TargetLive.Index, :edit
+
+    live "/targets/:id", TargetLive.Show, :show
+    live "/targets/:id/show/edit", TargetLive.Show, :edit
   end
 
   # Other scopes may use custom stacks.
