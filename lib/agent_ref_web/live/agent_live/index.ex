@@ -3,10 +3,18 @@ defmodule AgentRefWeb.AgentLive.Index do
 
   alias AgentRef.Agents
   alias AgentRef.Agents.Agent
+  alias AgentRef.Accounts
 
   @impl true
   def mount(_params, session, socket) do
-    current_user = Map.get(session, "current_user")
+    current_user =
+      case session do
+        %{"user_token" => token} -> Accounts.get_user_by_session_token(token)
+        _ -> nil
+      end
+
+    IO.inspect(current_user, label: "Current User after fetching")
+
     {:ok,
      socket
      |> assign(:current_user, current_user)

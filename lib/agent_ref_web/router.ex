@@ -21,7 +21,7 @@ defmodule AgentRefWeb.Router do
     pipe_through [:browser, :require_authenticated_user]
 
     live_session :agent_referral,
-      on_mount: [] do
+      on_mount: [{AgentRefWeb.UserAuth, :mount_current_user}] do
       live "/", DashLive.Index, :index
 
       live "/faq", FaqLive.Index, :index

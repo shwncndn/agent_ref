@@ -142,7 +142,7 @@
                   alt=""
                 />
                 <span class="sr-only">You're signed in as</span>
-                <span aria-hidden="true">Dezirae</span>
+                <span aria-hidden="true"><%= if @current_user, do: @current_user.email, else: "Guest" %></span>
               </a>
             </div>
           </li>
