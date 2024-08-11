@@ -49,29 +49,21 @@ defmodule AgentRef.Agents do
       {:error, %Ecto.Changeset{}}
 
   """
-  def create_agent(attrs \\ %{}) do
-    %Agent{}
-    |> Agent.changeset(attrs)
-    |> Repo.insert()
-  end
+def change_agent(%Agent{} = agent, attrs \\ %{}, current_user \\ nil) do
+  Agent.changeset(agent, attrs, current_user)
+end
 
-  @doc """
-  Updates a agent.
+def create_agent(attrs \\ %{}, current_user) do
+  %Agent{}
+  |> Agent.changeset(attrs, current_user)
+  |> Repo.insert()
+end
 
-  ## Examples
-
-      iex> update_agent(agent, %{field: new_value})
-      {:ok, %Agent{}}
-
-      iex> update_agent(agent, %{field: bad_value})
-      {:error, %Ecto.Changeset{}}
-
-  """
-  def update_agent(%Agent{} = agent, attrs) do
-    agent
-    |> Agent.changeset(attrs)
-    |> Repo.update()
-  end
+def update_agent(%Agent{} = agent, attrs, current_user) do
+  agent
+  |> Agent.changeset(attrs, current_user)
+  |> Repo.update()
+end
 
   @doc """
   Deletes a agent.
@@ -98,7 +90,4 @@ defmodule AgentRef.Agents do
       %Ecto.Changeset{data: %Agent{}}
 
   """
-  def change_agent(%Agent{} = agent, attrs \\ %{}) do
-    Agent.changeset(agent, attrs)
-  end
 end
