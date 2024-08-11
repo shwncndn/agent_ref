@@ -60,7 +60,8 @@ defmodule AgentRef.MixProject do
       {:jason, "~> 1.2"},
       {:dns_cluster, "~> 0.1.1"},
       {:bandit, "~> 1.5"},
-      {:geocoder, "~> 2.0"}
+      {:geocoder, "~> 2.0"},
+      {:backpex, "~> 0.6.0"}
     ]
   end
 

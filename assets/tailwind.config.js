@@ -9,7 +9,8 @@ module.exports = {
   content: [
     "./js/**/*.js",
     "../lib/agent_ref_web.ex",
-    "../lib/agent_ref_web/**/*.*ex"
+    "../lib/agent_ref_web/**/*.*ex",
+    '../deps/backpex/**/*.*ex'
   ],
   theme: {
     extend: {
