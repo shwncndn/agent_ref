@@ -27,12 +27,12 @@ defmodule AgentRef.Agents.Agent do
 def changeset(agent, attrs, current_user \\ nil) do
   agent
   |> cast(attrs, [:first_name, :last_name, :license, :email, :state, :city, :county, :brokerage, :address, :broker_phone, :agent_phone, :broker_email, :longitude, :latitude])
-  |> maybe_put_submitted_by(current_user)
+  |> put_submitted_by(current_user)
   |> validate_required([:first_name, :last_name, :license, :email, :state, :city, :county, :brokerage, :address, :broker_phone, :agent_phone, :broker_email, :longitude, :latitude])
 end
 
-defp maybe_put_submitted_by(changeset, %{email: email}) when is_binary(email) do
+defp put_submitted_by(changeset, %{email: email}) when is_binary(email) do
   put_change(changeset, :submitted_by, email)
 end
-defp maybe_put_submitted_by(changeset, _), do: changeset
+defp put_submitted_by(changeset, _), do: changeset
 end

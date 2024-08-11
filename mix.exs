@@ -61,7 +61,9 @@ defmodule AgentRef.MixProject do
       {:dns_cluster, "~> 0.1.1"},
       {:bandit, "~> 1.5"},
       {:geocoder, "~> 2.0"},
-      {:backpex, "~> 0.6.0"}
+      {:backpex, "~> 0.6.0"},
+      {:ex_machina, "~> 2.8.0", only: :test},
+      {:faker, "~> 0.18.0"}
     ]
   end
 

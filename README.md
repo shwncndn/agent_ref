@@ -10,7 +10,7 @@
   - Rate/comment
   - FAQ from SoundLift
   - create component library
-
+  - dropdown for state and county selection
 
 
 
